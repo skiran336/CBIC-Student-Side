@@ -1,0 +1,28 @@
+.yellow-box {
+    width: 100vw; 
+    height: 80px; 
+    background-color: #fdb515;
+    position: relative; 
+  }
+  
+  .yellow-box a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+  }
+  .yellow-box a:hover .text {
+    text-decoration: underline;
+    color: black;
+    display: flex;
+    align-items: center;
+  }
+  .yellow-box .text {
+    font-weight: bold;
+    font-size: 35px;
+    margin-left: 420px;
+    margin-top: 18px;
+    font: bold;
+  }
+
+  
