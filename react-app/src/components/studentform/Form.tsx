@@ -47,12 +47,6 @@ function Form() {
 
     });
 
-    const validateEmail = (email: string) => {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      };
-      const validatePhoneNumber = (phoneNumber: string) => {
-        return /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(phoneNumber);
-      };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target as { name: keyof FormErrors, value: string };
@@ -62,6 +56,7 @@ function Form() {
         }));
 
         const newErrors = { ...formErrors, [name]: '' };
+        let hasError = false;
 
         if (name === 'email' && value) {
             const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -93,7 +88,6 @@ function Form() {
 
         let errors = { ...formErrors };
         let hasError = false;
-
         // Name validation
 
         if (!formFields.name.trim()) {
@@ -115,7 +109,16 @@ function Form() {
         if (!formFields.email.trim()) {
             errors.email = 'Error: This is a required field.';
             hasError = true;
-        } else {
+        } 
+        else if(formFields.email.trim()){
+          const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formFields.email);
+            if (!isValidEmail) {
+              errors.email = 'Invalid email address';
+              hasError = true;
+            }
+
+        }
+        else {
             errors.email = '';
         }
 
@@ -123,7 +126,15 @@ function Form() {
         if (!formFields.phoneNumber.trim()) {
             errors.phoneNumber = 'Error: This is a required field.';
             hasError = true;
-        } else {
+        }
+        else if(formFields.phoneNumber.trim()){
+          const isValidPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(formFields.phoneNumber);
+            if (!isValidPhone) {
+              errors.phoneNumber = 'Invalid phone number';
+              hasError = true;
+            }
+        }
+        else {
             errors.phoneNumber = '';
         }
 
@@ -131,18 +142,20 @@ function Form() {
         if (!formFields.classStanding.trim()) {
             errors.classStanding = 'Error: This is a required field.';
             hasError = true;
-        } else {
+        }
+         else{
             errors.classStanding = '';
         }
 
         // Set form errors
         setFormErrors(errors);
 
-        // If any errors exist, stop form submission
-        if (hasError) {
-            return;
+  
+        if(hasError){
+          return;
         }
-
+  
+        // If any errors exist, stop form submission
         // If no errors, handle form submission
         //alert('Form submitted!');
         navigate('/formpage2/');
