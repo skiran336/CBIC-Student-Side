@@ -2,74 +2,36 @@ import React,{ useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './FormPage2.css'
 import { useNavigate } from 'react-router-dom';
+import { useFormContext } from './FormContext';
 
 
 function Form() {
     const navigate = useNavigate();
-    type FormFields = {
-        name: string;
-        major: string;
-        email: string;
-        phoneNumber: string;
-        name2: string;
-        email2: string;
-        name3: string;
-        email3: string;
-        name4: string;
-        email4: string;
-        classStanding: string;
-    };
-
-    type FormErrors = {
-        [Key in keyof FormFields]?: string;
-    };
-
-    const [formFields, setFormFields] = useState<FormFields>({
-        name: '',
-        major: '',
-        email: '',
-        phoneNumber: '',
-        classStanding: '',
-        name2: '',
-        email2: '',
-        name3: '',
-        email3: '',
-        name4: '',
-        email4: ''
-    });
-
-    const [formErrors, setFormErrors] = useState<FormErrors>({
-        name: '',
-        major: '',
-        email: '',
-        phoneNumber: '',
-        classStanding: ''
-
-    });
-
+    const { formFields, setFormFields, formErrors, setFormErrors } = useFormContext();
+    
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target as { name: keyof FormErrors, value: string };
+        const { name, value } = e.target;
         setFormFields((prevState) => ({
             ...prevState,
             [name]: value,
         }));
 
         const newErrors = { ...formErrors, [name]: '' };
-        let hasError = false;
-
-        if (name === 'email' && value) {
-            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-            if (!isValidEmail) {
+        if (['email', 'email2', 'email3', 'email4'].includes(name) && value) {
+          const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+          if (!isValidEmail) {
               newErrors[name] = 'Invalid email address';
-            }
           }
-          if (name === 'phoneNumber' && value) {
-            const isValidPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(value);
-            if (!isValidPhone) {
+      }
+      
+      if (name === 'phoneNumber' && value) {
+          const isValidPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(value);
+          if (!isValidPhone) {
               newErrors[name] = 'Invalid phone number';
-            }
           }
+      }
+
           setFormErrors(newErrors);
     };  
     
@@ -83,7 +45,7 @@ function Form() {
       };
       
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement | HTMLTextAreaElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement | HTMLTextAreaElement>) => {
         event.preventDefault();
 
         let errors = { ...formErrors };
@@ -147,20 +109,59 @@ function Form() {
             errors.classStanding = '';
         }
 
-        // Set form errors
+        if(formFields.email2.trim()){
+          const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formFields.email2);
+            if (!isValidEmail) {
+              errors.email2 = 'Invalid email address';
+              hasError = true;
+            }
+
+        }
+
+        if(formFields.email3.trim()){
+          const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formFields.email3);
+            if (!isValidEmail) {
+              errors.email3 = 'Invalid email address';
+              hasError = true;
+            }
+
+        }
+
+        if(formFields.email4.trim()){
+          const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formFields.email4);
+            if (!isValidEmail) {
+              errors.email4 = 'Invalid email address';
+              hasError = true;
+            }
+
+        }
         setFormErrors(errors);
 
-  
         if(hasError){
           return;
         }
-  
-        // If any errors exist, stop form submission
-        // If no errors, handle form submission
-        //alert('Form submitted!');
-        navigate('/formpage2/');
+        
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formFields)
+      };
+      
+      try {
+          const response = await fetch('http://localhost:8080/studentform', requestOptions);
+          
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          
+          navigate('/formpage2/');
+          
+      } catch (error) {
+          console.error('There was an error!', error);
+      }
 
-        // Process the form submission here (e.g., send data to a server)
+       
+
     };
 
   return (
@@ -270,6 +271,7 @@ function Form() {
           placeholder="Enter Input Here"
         />
       </label>
+      {formErrors.email2 && <p style={{ color: 'red' }}>{formErrors.email2}</p>} 
     </div>
     <div className='label'>
       <label>
@@ -294,6 +296,7 @@ function Form() {
           placeholder="Enter Input Here"
         />
       </label>
+      {formErrors.email3 && <p style={{ color: 'red' }}>{formErrors.email3}</p>} 
     </div>
     <div className='label'>
       <label>
@@ -318,6 +321,7 @@ function Form() {
           placeholder="Enter Input Here"
         />
       </label>
+      {formErrors.email4 && <p style={{ color: 'red' }}>{formErrors.email4}</p>} 
     </div>
     
     <div className="submit-button-container">
