@@ -7,6 +7,8 @@ import Umbc from './components/headpart/Umbc';
 import AlexBrown from './components/headpart/AlexBrown';
 import Form from './components/studentform/Form';
 import FormPage2 from './components/studentform/FormPage2';
+import LoginPage from './components/LoginPage/LoginPage';
+
 
 
 
@@ -26,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Form />} />
         <Route path="/formpage2/" element={<FormPage2 />} />
+        <Route path="/loginpage/" element={<LoginPage />} />
       </Routes>
     </Router>
     
