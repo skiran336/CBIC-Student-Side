@@ -1,5 +1,4 @@
-import React,{ useState } from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react';
 import './FormPage2.css'
 import { useNavigate } from 'react-router-dom';
 import { useFormContext } from './FormContext';
