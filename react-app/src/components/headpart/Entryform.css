@@ -1,19 +1,30 @@
 .body-container {
-    display: flex;
-    justify-content: center; 
-    align-items: left;
-    height: 60px; 
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  height: 60px;
+}
 
 .note {
-    display: flex;
-    justify-content: center; 
-    align-items: left;
-    height: 40px; 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  height: 40px;
 }
 
-.note p{
+.note p {
   color: black;
-  justify-content: center;
+  text-align: center; 
 }
-  
+
+@media (max-width: 768px) {
+  .body-container, .note {
+      flex-direction: column; 
+      align-items: center; 
+      height: auto; 
+  }
+
+  .note p {
+      font-size: 14px; 
+  }
+}

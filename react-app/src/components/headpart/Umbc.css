@@ -33,5 +33,23 @@
     margin-left: 330px; 
     margin-top: 16px;
   }
-
+  @media (max-width: 768px) {
+    .black-box {
+        height: auto; 
+        padding: 20px 0; 
+    }
+    
+    .black-box img {
+        width: 60px; 
+        height: auto; 
+        margin-left: 20px; 
+        margin-top: 0;
+    }
+    
+    .black-box .text {
+        font-size: 40px; 
+        margin-left: 100px; 
+        margin-top: 0; 
+    }
+}
   

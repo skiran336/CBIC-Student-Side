@@ -74,4 +74,33 @@
     justify-content: left;
     color: red;
   }
+
+  @media (max-width: 768px) {
+    .form-page-2 {
+        width: 90%; 
+    }
+
+    input[type="text"], .large-input {
+        width: calc(100% - 20px); 
+    }
+
+    .submit-button, .submit-button-container {
+        justify-content: center; 
+    }
+}
+
+@media (max-width: 480px) {
+    .form-page-2 {
+        width: 95%; 
+    }
+
+    label, .label {
+        margin-bottom: 15px; 
+    }
+
+    .submit-button {
+        padding: 8px 15px; 
+        font-size: 14px;
+    }
+}
   
