@@ -140,27 +140,8 @@ function Form() {
         if(hasError){
           return;
         }
-        
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formFields)
-      };
-      
-      try {
-          const response = await fetch('http://localhost:8080/studentform', requestOptions);
-          
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-          
-          navigate('/formpage2/');
-          
-      } catch (error) {
-          console.error('There was an error!', error);
-      }
 
-       
+        navigate('/formpage2/');
 
     };
 
