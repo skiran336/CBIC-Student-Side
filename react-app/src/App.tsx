@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import CBICLogo from './components/headpart/CBICLogo';
@@ -9,33 +9,23 @@ import Form from './components/studentform/Form';
 import FormPage2 from './components/studentform/FormPage2';
 import LoginPage from './components/LoginPage/LoginPage';
 
-
-
-
-
+import { FormProvider } from './components/studentform/FormContext'; 
 function App() {
-  function handleSubmit(data: FormData): void {
-    throw new Error('Function not implemented.');
-  }
-
   return (
     <div>
       <Umbc/>
-    <AlexBrown/>
-    <CBICLogo />
-    <EntryForm />
+      <AlexBrown/>
+      <CBICLogo />
+      <EntryForm />
       <Router>
       <Routes>
         <Route path="/" element={<Form />} />
         <Route path="/formpage2/" element={<FormPage2 />} />
-        <Route path="/loginpage/" element={<LoginPage />} />
       </Routes>
     </Router>
     
     </div>
-    
   );
-  
 }
 
 export default App;

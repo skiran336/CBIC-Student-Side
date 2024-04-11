@@ -95,5 +95,41 @@
   .cancel-button:hover {
     background-color: #896f18; 
   }
+
+@media (max-width: 768px) {
+  .form, .form-page-2 {
+    width: 90%; 
+    padding: 15px; 
+  }
+
+  .label, label {
+    margin-bottom: 15px; 
+  }
+
+  input[type="text"], .large-input {
+    width: 100%; 
+  }
+
+  .submit-button, .cancel-button {
+    padding: 8px 15px; 
+    font-size: 14px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .form, .form-page-2 {
+    width: 95%; 
+  }
+
+  .label, label {
+    margin-bottom: 10px; 
+  }
+
+  .submit-button, .cancel-button {
+    padding: 6px 10px; 
+    font-size: 12px; 
+  }
+}
+
   
   

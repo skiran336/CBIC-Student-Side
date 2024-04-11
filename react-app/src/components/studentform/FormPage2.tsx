@@ -1,53 +1,19 @@
 import React,{ useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './Form.css'
+import { useFormContext } from './FormContext';
 import { useNavigate } from 'react-router-dom';
 
 
 function FormPage2() {
     const navigate = useNavigate();
+    const { formFields, setFormFields, formErrors, setFormErrors } = useFormContext();
     useEffect(() => {
         window.scrollTo(0, 0);
       }, []);
     
-      
-    type FormFields = {
-        track: string;
-        ideaName: string;
-        question1: string;
-        question2: string;
-        question3: string;
-        question4: string;
-        timeToLaunch: string;
-    };
-
-    type FormErrors = {
-        [Key in keyof FormFields]?: string;
-    };
-
-    const [formFields, setFormFields] = useState<FormFields>({
-        track: '',
-        ideaName: '',
-        question1: '',
-        question2: '',
-        question3: '',
-        question4: '',
-        timeToLaunch: ''
-
-    });
-
-    const [formErrors, setFormErrors] = useState<FormErrors>({
-        track: '',
-        ideaName: '',
-        question1: '',
-        question2: '',
-        question3: '',
-        question4: '',
-        timeToLaunch: ''
-    });
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target as { name: keyof FormErrors, value: string };
+        const { name, value } = e.target; 
         setFormFields((prevState) => ({
             ...prevState,
             [name]: value,
@@ -66,11 +32,13 @@ function FormPage2() {
     
       };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         let errors = { ...formErrors };
         let hasError = false;
+
+        
 
         // Name validation
         if (!formFields.track.trim()) {
@@ -133,8 +101,31 @@ function FormPage2() {
             return;
         }
 
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formFields)
+        };
+        
+        try {
+            const response = await fetch('http://localhost:8080/studentform', requestOptions);
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            
+            
+            
+        } catch (error) {
+            console.error('There was an error!', error);
+        }
+
         // If no errors, handle form submission
-        alert('Form submitted!');
+        alert('Thank you for submitting the form! You are being redirected to: https://entrepreneurship.umbc.edu/');
+        const navigateToExternalURL = (url: string) => {
+         window.location.href = url;
+          };
+         navigateToExternalURL('https://entrepreneurship.umbc.edu/')
     };
 
   return (

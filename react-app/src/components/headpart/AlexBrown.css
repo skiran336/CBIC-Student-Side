@@ -24,5 +24,23 @@
     margin-top: 18px;
     font: bold;
   }
+  @media (max-width: 768px) {
+    .yellow-box {
+        height: 60px; /* Slightly smaller box for smaller devices */
+    }
 
-  
+    .yellow-box .text {
+        font-size: 24px; 
+        margin-left: 20px;
+        margin-top: 10px; 
+    }
+
+}
+
+
+@media (max-width: 480px) {
+    .yellow-box .text {
+        font-size: 18px; 
+        margin-left: 15px; 
+    }
+}
