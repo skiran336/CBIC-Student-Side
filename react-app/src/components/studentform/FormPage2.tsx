@@ -122,7 +122,7 @@ function FormPage2() {
         // If no errors, handle form submission
         alert('Thank you for submitting the form! You are being redirected to: https://entrepreneurship.umbc.edu/');
         const navigateToExternalURL = (url: string) => {
-         window.location.href = url;
+            window.location.replace(url);
           };
          navigateToExternalURL('https://entrepreneurship.umbc.edu/')
     };
