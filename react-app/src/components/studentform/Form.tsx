@@ -114,7 +114,11 @@ function Form() {
               errors.email2 = 'Invalid email address';
               hasError = true;
             }
+        }
 
+        if(formFields.name2.trim() && !formFields.email2.trim()){
+          errors.email2 = 'Error: This is a required field.';
+          hasError = true;
         }
 
         if(formFields.email3.trim()){
@@ -123,7 +127,11 @@ function Form() {
               errors.email3 = 'Invalid email address';
               hasError = true;
             }
+        }
 
+        if(formFields.name3.trim() && !formFields.email3.trim()){
+          errors.email3 = 'Error: This is a required field.';
+          hasError = true;
         }
 
         if(formFields.email4.trim()){
@@ -133,6 +141,10 @@ function Form() {
               hasError = true;
             }
 
+        }
+        if(formFields.name4.trim() && !formFields.email4.trim()){
+          errors.email4 = 'Error: This is a required field.';
+          hasError = true;
         }
         setFormErrors(errors);
 
