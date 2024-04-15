@@ -35,11 +35,8 @@ function Form() {
     };  
     
     const handleCancel = () => {
-        // Example action: Show an alert message
-        const userConfirmed = window.confirm('Are you sure you want to cancel?');
-        if(userConfirmed){
+        
             window.location.href='https://entrepreneurship.umbc.edu/competitions/the-cangialosi-business-innovation-competition/'
-        }
     
       };
       
