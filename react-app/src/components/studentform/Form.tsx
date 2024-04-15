@@ -115,22 +115,12 @@ function Form() {
             }
         }
 
-        if(formFields.name2.trim() && !formFields.email2.trim()){
-          errors.email2 = 'Error: This is a required field.';
-          hasError = true;
-        }
-
         if(formFields.email3.trim()){
           const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formFields.email3);
             if (!isValidEmail) {
               errors.email3 = 'Invalid email address';
               hasError = true;
             }
-        }
-
-        if(formFields.name3.trim() && !formFields.email3.trim()){
-          errors.email3 = 'Error: This is a required field.';
-          hasError = true;
         }
 
         if(formFields.email4.trim()){
@@ -141,10 +131,7 @@ function Form() {
             }
 
         }
-        if(formFields.name4.trim() && !formFields.email4.trim()){
-          errors.email4 = 'Error: This is a required field.';
-          hasError = true;
-        }
+
         setFormErrors(errors);
 
         if(hasError){
