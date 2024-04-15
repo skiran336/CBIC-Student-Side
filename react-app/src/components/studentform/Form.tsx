@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './FormPage2.css'
 import { useNavigate } from 'react-router-dom';
 import { useFormContext } from './FormContext';
@@ -7,8 +7,10 @@ import { useFormContext } from './FormContext';
 function Form() {
     const navigate = useNavigate();
     const { formFields, setFormFields, formErrors, setFormErrors } = useFormContext();
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
     
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormFields((prevState) => ({
