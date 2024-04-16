@@ -1,6 +1,8 @@
 import React from 'react'
 import "./CBICLogo.css"
-const CBICLogo = () => {
+
+//This is used to display CBIC logo
+function CBICLogo() {
   return (
     <div className="container">
       <img src = "https://entrepreneurship.umbc.edu/wp-content/uploads/sites/39/2022/05/new-CBIC-Logo-1-300x243.png" alt="External Source" />

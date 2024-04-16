@@ -1,7 +1,8 @@
 import React from 'react'
 import "./AlexBrown.css"
 
-const AlexBrown = () => {
+//This is to display 'Alex Brown..' heading
+function AlexBrown()  {
   return (
     <div className="yellow-box">
     <a href = "https://entrepreneurship.umbc.edu/" target="_blank">

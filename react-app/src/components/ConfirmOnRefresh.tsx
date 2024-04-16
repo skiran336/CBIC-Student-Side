@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 
+//This is used to ask the user for confirmation if he refreshes the webpage.
 function ConfirmOnRefresh() {
     useEffect(() => {
         const handleBeforeUnload = (event: { preventDefault: () => void; returnValue: string; }) => {
-            event.preventDefault(); // standard for most browsers
-            event.returnValue = ''; // required for Chrome
-            // You can also set a custom message, but modern browsers generally
-            // provide their own default message for security reasons.
+            event.preventDefault(); 
+            event.returnValue = ''; 
         };
 
         window.addEventListener('beforeunload', handleBeforeUnload);
