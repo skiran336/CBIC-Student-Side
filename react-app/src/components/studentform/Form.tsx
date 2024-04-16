@@ -3,14 +3,15 @@ import './FormPage2.css'
 import { useNavigate } from 'react-router-dom';
 import { useFormContext } from './FormContext';
 
-
+//This is used to build the first page of the CBIC entry form
 function Form() {
     const navigate = useNavigate();
     const { formFields, setFormFields, formErrors, setFormErrors } = useFormContext();
     useEffect(() => {
       window.scrollTo(0, 0);
     }, []);
-    
+
+//This is used to handle the changes in the input boxes of the form
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormFields((prevState) => ({
@@ -42,7 +43,7 @@ function Form() {
     
       };
       
-
+//THis is used to handle the form after clicking the 'Save & Continue' button on the page.
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement | HTMLTextAreaElement>) => {
         event.preventDefault();
 
@@ -107,6 +108,7 @@ function Form() {
             errors.classStanding = '';
         }
 
+        //email2 validation
         if(formFields.email2.trim()){
           const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formFields.email2);
             if (!isValidEmail) {
@@ -115,6 +117,7 @@ function Form() {
             }
         }
 
+        //email3 validation
         if(formFields.email3.trim()){
           const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formFields.email3);
             if (!isValidEmail) {
@@ -123,6 +126,7 @@ function Form() {
             }
         }
 
+        //email4 validation
         if(formFields.email4.trim()){
           const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formFields.email4);
             if (!isValidEmail) {
@@ -138,6 +142,7 @@ function Form() {
           return;
         }
 
+        //navigate to second page of the form
         navigate('/formpage2/');
 
     };

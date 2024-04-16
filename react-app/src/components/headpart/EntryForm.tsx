@@ -1,7 +1,8 @@
 import React from 'react'
 import './Entryform.css'
 
-const EntryForm = () => {
+//This is used to display CBIC heading and add a note below it
+function EntryForm() {
   return (
     <div>
       <div className='body-container'>

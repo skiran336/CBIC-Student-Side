@@ -3,7 +3,7 @@ import './Form.css'
 import { useFormContext } from './FormContext';
 import { useNavigate } from 'react-router-dom';
 
-
+//This is used to build second page of CBIC entry form
 function FormPage2() {
     const navigate = useNavigate();
     const { formFields, setFormFields, formErrors, setFormErrors } = useFormContext();
@@ -25,12 +25,14 @@ function FormPage2() {
         }
     };
 
+    //This is used to handle the back button on page
     const handleBack = () => {
         
         navigate('/');
     
       };
 
+    //This is used to handle the submit button on page
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
@@ -71,6 +73,7 @@ function FormPage2() {
             errors.question2 = '';
         }
 
+        //question3 Validation
         if (!formFields.question3.trim()) {
             errors.question3 = 'This is a required field.';
             hasError = true;
@@ -78,6 +81,7 @@ function FormPage2() {
             errors.question3 = '';
         }
 
+        //question4 validation
         if (!formFields.question4.trim()) {
             errors.question4 = 'This is a required field.';
             hasError = true;
@@ -85,6 +89,7 @@ function FormPage2() {
             errors.question4 = '';
         }
 
+        //timeTOLaunch radio buttons validation
         if (!formFields.timeToLaunch.trim()) {
             errors.timeToLaunch = 'This is a required field.';
             hasError = true;
@@ -100,6 +105,7 @@ function FormPage2() {
             return;
         }
 
+        //This is used to store the data in the form into MongoDB database
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
