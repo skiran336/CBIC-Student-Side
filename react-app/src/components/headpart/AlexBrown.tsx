@@ -1,7 +1,7 @@
 import React from 'react'
 import "./AlexBrown.css"
 
-//This is 
+//This is to display 'Alex Brown..' heading
 function AlexBrown()  {
   return (
     <div className="yellow-box">
