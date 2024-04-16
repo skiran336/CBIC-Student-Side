@@ -2,6 +2,7 @@ import React,{ useEffect } from 'react';
 import './Form.css'
 import { useFormContext } from './FormContext';
 import { useNavigate } from 'react-router-dom';
+import labels from './labels';
 
 //This is used to build second page of CBIC entry form
 function FormPage2() {
@@ -138,7 +139,7 @@ function FormPage2() {
     <form onSubmit={handleSubmit} className="form-page-2">
     <div className='label'>
     <label>
-        Please Choose A Track: (Only Pick One)<span style={{ color: 'red' }}>*</span>
+        {labels.track}<span style={{ color: 'red' }}>*</span>
     </label>
     <label>
             <input
@@ -166,7 +167,7 @@ function FormPage2() {
     </div>
     <div className='label'>
       <label>
-        Name of your Idea: <span style={{ color: 'red' }}>*</span>
+        {labels.idea}<span style={{ color: 'red' }}>*</span>
         <br></br>
         <input
           type="text" 
@@ -181,7 +182,7 @@ function FormPage2() {
       </div>
     <div className='label'>
       <label>
-      Opportunity/Market Problem: Explain how current market conditions are creating an opportunity for your product/service. Convince the investor of the uniqueness of the business and the NEED for your company. <span style={{ color: 'red' }}>*</span>
+      {labels.question1} <span style={{ color: 'red' }}>*</span>
         <textarea 
           name ="question1"
           value={formFields.question1}
@@ -194,7 +195,7 @@ function FormPage2() {
       </div>
     <div className='label'>
       <label>
-      Marketplace and Competition: Provide a clear description of your target market and any market segments that may exist within that market.  Include potential market size, growth rate, current or potential direct and indirect competitors.  Briefly describe the competitive outlook and dynamics of the relevant market in which you will operate <span style={{ color: 'red' }}>*</span>
+      {labels.question2} <span style={{ color: 'red' }}>*</span>
         <textarea
           name='question2'
           className='large-input'
@@ -207,7 +208,7 @@ function FormPage2() {
     </div>
     <div className='label'>
       <label>
-      Resources Available/Needed: List the resources, people, technology, facilities, equipment and funding needed to make your project a success. How do you plan to acquire these resources? <span style={{ color: 'red' }}>*</span>
+      {labels.question3} <span style={{ color: 'red' }}>*</span>
         <textarea
           name='question3'
           className='large-input'
@@ -220,7 +221,7 @@ function FormPage2() {
     </div>
     <div className='label'>
       <label>
-      Compelling Investment Opportunity: List the main reasons investors should consider investing in your company.<span style={{ color: 'red' }}>*</span>
+      {labels.question4}<span style={{ color: 'red' }}>*</span>
         <textarea
           name='question4'
           className='large-input'
@@ -233,7 +234,7 @@ function FormPage2() {
     </div>
     <div className='label'>
     <label>
-        In how much time do you expect to launch your business:<span style={{ color: 'red' }}>*</span>
+        {labels.timeToLaunch}<span style={{ color: 'red' }}>*</span>
     </label>
     <label>
             <input

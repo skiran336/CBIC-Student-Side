@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './FormPage2.css'
 import { useNavigate } from 'react-router-dom';
 import { useFormContext } from './FormContext';
+import labels from './labels'
 
 //This is used to build the first page of the CBIC entry form
 function Form() {
@@ -152,7 +153,7 @@ function Form() {
     <form onSubmit={handleSubmit} className="form">
     <div className='label'>
       <label>
-        Name (First and Last): <span style={{ color: 'red' }}>*</span>
+       {labels.name} <span style={{ color: 'red' }}>*</span>
         <input
           type="text" 
           name ="name"
@@ -165,7 +166,7 @@ function Form() {
     </div>
     <div className='label'>
       <label>
-        Major:<span style={{ color: 'red' }}>*</span>
+        {labels.major}<span style={{ color: 'red' }}>*</span>
         <br></br>
         <input
           type="text" 
@@ -179,7 +180,7 @@ function Form() {
       </div>
     <div className='label'>
       <label>
-        UMBC Email Id: <span style={{ color: 'red' }}>*</span>
+        {labels.email} <span style={{ color: 'red' }}>*</span>
         <input
           type="text" 
           name='email'
@@ -192,7 +193,7 @@ function Form() {
     </div>
     <div className='label'>
       <label>
-        Cell Phone Number: <span style={{ color: 'red' }}>*</span>
+        {labels.phoneNumber} <span style={{ color: 'red' }}>*</span>
         <input
           type="text" 
           name='phoneNumber'
@@ -205,7 +206,7 @@ function Form() {
     </div>
     <div className='label'>
     <label>
-        Class Standing: YOU MUST BE AN ACTIVE STUDENT<span style={{ color: 'red' }}>*</span>
+        {labels.classStanding}<span style={{ color: 'red' }}>*</span>
     </label>
     <label>
             <input
@@ -233,7 +234,7 @@ function Form() {
     </div>
     <div className='label'>
       <label>
-        Team Memeber #2 Name: 
+        {labels.name2} 
         <input
           type="text" 
           name='name2'
@@ -245,7 +246,7 @@ function Form() {
     </div>
     <div className='label'>
       <label>
-        Team Memeber #2 Email: 
+        {labels.email2}
         <input 
           type="text" 
           name='email2'
@@ -258,7 +259,7 @@ function Form() {
     </div>
     <div className='label'>
       <label>
-        Team Memeber #3 Name: 
+        {labels.name3}
         <input
           name='name3'
           type='text'
@@ -270,7 +271,7 @@ function Form() {
     </div>
     <div className='label'>
       <label>
-        Team Memeber #3 Email: 
+        {labels.email3}
         <input
           type="text" 
           name='email3'
@@ -283,7 +284,7 @@ function Form() {
     </div>
     <div className='label'>
       <label>
-        Team Memeber #4 Name:
+        {labels.name4}
         <input
           type="text" 
           name='name4'
@@ -295,7 +296,7 @@ function Form() {
     </div>
     <div className='label'>
       <label>
-        Team Memeber #4 Email: 
+        {labels.email4}
         <input
           type="text" 
           name='email4'
