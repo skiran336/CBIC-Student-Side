@@ -107,22 +107,22 @@ function FormPage2() {
         }
 
         //This is used to store the data in the form into MongoDB database
+        const apiUrl = process.env.API_URL || 'http://localhost:8080'; 
         const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formFields)
+         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formFields)
         };
-        
+
         try {
-            const response = await fetch('http://localhost:8080/studentform', requestOptions);
-            
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            
-            
-            
+          const response = await fetch(`${apiUrl}/studentform`, requestOptions);
+          if (!response.ok) {
+                if (response.status === 401) {
+        }
+        throw new Error(`Network response was not ok: ${response.status}`);
+        }
         } catch (error) {
+    
             console.error('There was an error!', error);
         }
 
