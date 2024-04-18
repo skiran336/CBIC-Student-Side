@@ -107,7 +107,7 @@ function FormPage2() {
         }
 
         //This is used to store the data in the form into MongoDB database
-        const apiUrl = process.env.API_URL || 'http://localhost:8080'; 
+        const apiUrl = 'https://cbic-student-backened-24c30721914b.herokuapp.com'; 
         const requestOptions = {
          method: 'POST',
         headers: { 'Content-Type': 'application/json' },
