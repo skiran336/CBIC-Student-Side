@@ -13,13 +13,13 @@ import ConfirmOnRefresh from "./components/ConfirmOnRefresh";
 function App() {
   return (
     <div>
-      <ConfirmOnRefresh /> 
       <Umbc/>
       <AlexBrown/>
       <CBICLogo />
       <EntryForm />
       <Router>
         <FormProvider>
+        <ConfirmOnRefresh /> 
           <Routes>
           <Route path="/" element={<Navigate replace to="/form" />} />
             <Route path="/form" element={<Form />} />
