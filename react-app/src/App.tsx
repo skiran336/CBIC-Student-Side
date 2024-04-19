@@ -18,8 +18,7 @@ function App() {
       <CBICLogo />
       <EntryForm />
       <Router>
-        <FormProvider>
-        <ConfirmOnRefresh /> 
+        <FormProvider> 
           <Routes>
           <Route path="/" element={<Navigate replace to="/form" />} />
             <Route path="/form" element={<Form />} />
