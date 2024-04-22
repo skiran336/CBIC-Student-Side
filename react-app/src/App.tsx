@@ -8,7 +8,6 @@ import AlexBrown from './components/headpart/AlexBrown';
 import Form from './components/studentform/Form';
 import FormPage2 from './components/studentform/FormPage2';
 import LoginPage from './components/LoginPage/LoginPage';
-
 import { FormProvider } from './components/studentform/FormContext'; 
 
 function App() {
@@ -19,10 +18,12 @@ function App() {
       <CBICLogo />
       <EntryForm />
       <Router>
+      <FormProvider>
       <Routes>
         <Route path="/" element={<Form />} />
         <Route path="/formpage2/" element={<FormPage2 />} />
       </Routes>
+      </FormProvider>
     </Router>
     
     </div>
