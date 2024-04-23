@@ -9,7 +9,7 @@ function EntryForm() {
         <h1>CBIC Entry Form</h1>
       </div>
       <div className='note'>
-        <p>Note: <span style={{color: 'red'}}>*</span> indiactes it is a required field</p>
+        <p>Note: <span style={{color: 'red'}}>*</span> indicates it is a required field</p>
       </div>
     </div>
   )
