@@ -30,7 +30,7 @@ function App() {
         </FormProvider>
       </Router>
     </div>
-  )
+  );
 }
 
 export default App;
