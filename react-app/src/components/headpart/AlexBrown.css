@@ -1,43 +1,55 @@
 .yellow-box {
-    width: 100vw; 
-    height: 80px; 
-    background-color: #fdb515;
-    position: relative; 
-  }
-  
-  .yellow-box a {
-    text-decoration: none;
-    color: black;
-    display: flex;
-    align-items: center;
-  }
-  .yellow-box a:hover .text {
-    text-decoration: underline;
-    color: black;
-    display: flex;
-    align-items: center;
-  }
-  .yellow-box .text {
-    font-weight: bold;
-    font-size: 35px;
-    margin-left: 420px;
-    margin-top: 18px;
-    font: bold;
-  }
-  @media (max-width: 768px) {
-    .yellow-box {
-        height: 60px; /* Slightly smaller box for smaller devices */
-    }
-
-    .yellow-box .text {
-        font-size: 24px; 
-        margin-left: 20px;
-        margin-top: 10px; 
-    }
-
+  width: 100vw; 
+  height: 80px; 
+  background-color: #fdb515;
+  position: relative; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 0 20px; 
 }
 
+.yellow-box a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 100%; 
+}
 
+.yellow-box a:hover .text {
+  text-decoration: underline;
+}
+
+.yellow-box .text {
+  font-weight: bold;
+  font-size: 35px;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+@media (max-width: 768px) {
+  .yellow-box {
+      height: 60px;
+  }
+
+  .yellow-box .text {
+      font-size: 24px; 
+      margin-top: 0; 
+  }
+}
+
+@media (max-width: 480px) {
+  .yellow-box {
+      height: 50px; 
+  }
+
+  .yellow-box .text {
+      font-size: 18px; 
+  }
+}
 @media (max-width: 480px) {
     .yellow-box .text {
         font-size: 18px; 
